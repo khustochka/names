@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>ABA area species named after people</title>
+    <meta property="og:image" content="names.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        var data = {"Cassin":["Cassin's Auklet","Cassin's Kingbird","Cassin's Vireo","Cassin's Sparrow","Cassin's Finch"],"Wilson":["Wilson's Storm-Petrel","Wilson's Plover","Wilson's Snipe","Wilson's Phalarope","Wilson's Warbler"],"Steller":["Steller's Eider","Steller's Sea-Eagle","Steller's Jay"],"Swainson":["Swainson's Hawk","Swainson's Thrush","Swainson's Warbler"],"Audubon":["Audubon's Shearwater","Audubon's Oriole"],"Bachman":["Bachman's Warbler","Bachman's Sparrow"],"Baird":["Baird's Sandpiper","Baird's Sparrow"],"Bell":["Bell's Vireo","Bell's Sparrow"],"Brewer":["Brewer's Sparrow","Brewer's Blackbird"],"Clark":["Clark's Grebe","Clark's Nutcracker"],"Harris":["Harris's Hawk","Harris's Sparrow"],"Le Conte":["Le Conte's Thrasher","Le Conte's Sparrow"],"Ross":["Ross's Goose","Ross's Gull"],"Townsend":["Townsend's Solitaire","Townsend's Warbler"],"Abert":["Abert's Towhee"],"Allen":["Allen's Hummingbird"],"Barrow":["Barrow's Goldeneye"],"Belcher":["Belcher's Gull"],"Bendire":["Bendire's Thrasher"],"Bewick":["Bewick's Wren"],"Bicknell":["Bicknell's Thrush"],"Bonaparte":["Bonaparte's Gull"],"Botteri":["Botteri's Sparrow"],"Brandt":["Brandt's Cormorant"],"Buller":["Buller's Shearwater"],"Bullock":["Bullock's Oriole"],"Bulwer":["Bulwer's Petrel"],"Cook":["Cook's Petrel"],"Cooper":["Cooper's Hawk"],"Cory":["Cory's Shearwater"],"Costa":["Costa's Hummingbird"],"Couch":["Couch's Kingbird"],"Craveri":["Craveri's Murrelet"],"Fea":["Fea's Petrel"],"Forster":["Forster's Tern"],"Franklin":["Franklin's Gull"],"Gambel":["Gambel's Quail"],"Grace":["Grace's Warbler"],"Hammond":["Hammond's Flycatcher"],"Heermann":["Heermann's Gull"],"Henslow":["Henslow's Sparrow"],"Hutton":["Hutton's Vireo"],"Kirtland":["Kirtland's Warbler"],"Kittlitz":["Kittlitz's Murrelet"],"La Sagra":["La Sagra's Flycatcher"],"Lawrence":["Lawrence's Goldfinch"],"Leach":["Leach's Storm-Petrel"],"Lewis":["Lewis's Woodpecker"],"Lincoln":["Lincoln's Sparrow"],"Lucy":["Lucy's Warbler"],"MacGillivray":["MacGillivray's Warbler"],"McCown":["McCown's Longspur"],"McKay":["McKay's Bunting"],"Middendorff":["Middendorff's Grasshopper-Warbler"],"Murphy":["Murphy's Petrel"],"Naumann":["Naumann's Thrush"],"Nelson":["Nelson's Sparrow"],"Newell":["Newell's Shearwater"],"Nuttall":["Nuttall's Woodpecker"],"Nutting":["Nutting's Flycatcher"],"Pallas":["Pallas's Leaf Warbler"],"Parkinson":["Parkinson's Petrel"],"Ridgway":["Ridgway's Rail"],"Sabine":["Sabine's Gull"],"Salvin":["Salvin's Albatross"],"Say":["Say's Phoebe"],"Scott":["Scott's Oriole"],"Scripps":["Scripps's Murrelet"],"Smith":["Smith's Longspur"],"Sprague":["Sprague's Pipit"],"Stejneger":["Stejneger's Petrel"],"Swinhoe":["Swinhoe's Storm-Petrel"],"Temminck":["Temminck's Stint"],"Thayer":["Thayer's Gull"],"Tristram":["Tristram's Storm-Petrel"],"Vaux":["Vaux's Swift"],"Williamson":["Williamson's Sapsucker"],"Worthen":["Worthen's Sparrow"],"Xantus":["Xantus's Hummingbird"],"Zino":["Zino's Petrel"]};
+
+        $(function() {
+            var tab = $("#sptab"),
+                    tr, key2, values;
+            $.each(data, function(key, value) {
+                tr = $("<tr></tr>");
+                key2 = key;
+                if (key2 == "Cassin")
+                    key2 = "<a href='https://en.wikipedia.org/wiki/John_Cassin'>Cassin</a>";
+                else if (key2 == "Wilson")
+                    key2 = "<a href='https://en.wikipedia.org/wiki/Alexander_Wilson_(ornithologist)'>Wilson</a>";
+                tr.append("<td class='name'>"+ key2 + "</td>");
+                tr.append("<td><span>"+ value.length + "</span></td>");
+                values = $.map(value, function(val) {
+                    return "<a href='https://www.allaboutbirds.org/guide/" + val.replace("'", "").replace(/ /g, "_") + "/id'>" + val + "</a>";
+                });
+                tr.append("<td><span class='list'>"+ values.join(", ") + "</span></td>");
+                tr.appendTo(tab);
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Verdana, Arial, sans-serif;
+            margin-left: 10%;
+            margin-right: 10%;
+            color: #333;
+            font-size: 12px;
+        }
+        table a {
+            color: #333;
+        }
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid lightgrey;
+        }
+        td.name {
+            /*font-weight: bold;*/
+        }
+        span.list a {
+            font-size: 12px;
+            color: #777;
+        }
+        span.expand {
+            /*font-weight: bold;*/
+            /*font-size: 20px;*/
+        }
+    </style>
+</head>
+<body>
+
+<h1>ABA area bird species named after people</h1>
+<p>
+    <a href="http://avibase.bsc-eoc.org/checklist.jsp?region=ABA&list=clements">Checklist source</a>
+</p>
+<table id="sptab">
+</table>
+</body>
+</html>
